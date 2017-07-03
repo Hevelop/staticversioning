@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Remove signature of the static files that is used to overcome the browser cache
+    RewriteRule ^version.+?/(.+)$ $1 [L]
+</IfModule>

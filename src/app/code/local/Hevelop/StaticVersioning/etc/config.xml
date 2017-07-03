@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hevelop_StaticVersioning>
+            <version>1.0.0</version>
+        </Hevelop_StaticVersioning>
+    </modules>
+    <global>
+        <models>
+            <hevelop_staticversioning>
+                <class>Hevelop_StaticVersioning_Model</class>
+            </hevelop_staticversioning>
+            <core>
+                <rewrite>
+                    <store>Hevelop_StaticVersioning_Model_Store</store>
+                    <design_package>Hevelop_StaticVersioning_Model_Design_Package</design_package>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <hevelop_staticversioning>
+                <class>Hevelop_StaticVersioning_Helper</class>
+            </hevelop_staticversioning>
+        </helpers>
+    </global>
+    <default>
+        <hevelop_staticversioning>
+            <general>
+                <activate>0</activate>
+            </general>
+        </hevelop_staticversioning>
+    </default>
+</config>

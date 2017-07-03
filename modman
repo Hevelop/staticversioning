@@ -1,0 +1,5 @@
+src/app/code/local/Hevelop/StaticVersioning                         app/code/local/Hevelop/StaticVersioning
+src/app/etc/modules/Hevelop_StaticVersioning.xml                    app/etc/modules/Hevelop_StaticVersioning.xml
+src/shell/hevelop_staticversioning_clearversion.php                 shell/hevelop_staticversioning_clearversion.php
+src/js/.htaccess                                                    js/.htaccess
+src/skin/.htaccess                                                  skin/.htaccess
