@@ -25,7 +25,7 @@
  */
 
 if (!defined('MAGE_BASE_DIR')) {
-    define('MAGE_BASE_DIR', rtrim(realpath(__DIR__ . '/../../../../htdocs/'), '/') . '/');
+    define('MAGE_BASE_DIR', rtrim(realpath(__DIR__ . '/../../../../../htdocs/'), '/') . '/');
 }
 
 require_once MAGE_BASE_DIR . '/shell/abstract.php';

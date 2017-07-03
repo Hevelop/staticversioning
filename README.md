@@ -35,6 +35,10 @@ To complete the installation of the module you have to copy the following files 
 
 If your are using modman, the first two files are linked automatically, but **not the last one**, to avoid problems with complex deployment setup where the media folder is a linked folder.
 
+Usage
+------
+After the deployment of new static resources (skin files/css/js) you can change the versioning url path using the shell command htdocs/shell/hevelop_staticversioning_clearversion.php.
+
 Uninstallation
 --------------
 1. Remove all extension files from your Magento installation
