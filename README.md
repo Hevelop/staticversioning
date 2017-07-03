@@ -27,6 +27,7 @@ Installation Instructions
 **BE CAREFUL, DRAGONS AHEAD:**
 
 To complete the installation of the module you have to copy the following files from the extension to your magento root:
+
 - src/skin/.htaccess -> MAGENTO_ROOT/skin/.htaccess
 - src/js/.htaccess -> MAGENTO_ROOT/js/.htaccess
 - src/media/.htaccess -> MAGENTO_ROOT/media/.htaccess
