@@ -1,5 +1,5 @@
 {
-    "name": "hevelop/static-versioning",
+    "name": "hevelop/staticversioning",
     "license": "AGPL-3.0",
     "type": "magento-module",
     "description": "Add a versioning prefix to the media files (js, css and images) to force browser's cache invalidation",
