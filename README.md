@@ -4,6 +4,7 @@ Hevelop Static Resources Versioning for Magento 1.x
 This module is inspired by the magento2 versioning system and rewrite the skin, js and media (only minified js and css) urls by prepending to them a versionXXXXX string.
 
 Examples:
+
 - /skin/frontend/base/default/braintree/css/braintree.css -> /skin/version1499078126/frontend/base/default/braintree/css/braintree.css
 - /js/varien/form.js -> /js/version1499078126/varien/form.js
 
