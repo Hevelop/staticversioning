@@ -1,4 +1,10 @@
 <config>
+    <tabs>
+        <hevelop translate="label" module="hevelop_staticversioning">
+            <label>Hevelop</label>
+            <sort_order>200</sort_order>
+        </hevelop>
+    </tabs>
     <sections>
         <hevelop_staticversioning>
             <label>Static Versioning</label>
