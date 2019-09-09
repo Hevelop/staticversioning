@@ -25,7 +25,8 @@
  */
 
 $MAGE_BASE_DIR = rtrim(realpath(__DIR__ . '/../../../../../htdocs/'), '/') . '/';
-if (!file_exists(MAGE_BASE_DIR)) {
+
+if (strpos($MAGE_BASE_DIR, 'htdocs') === false) {
     $MAGE_BASE_DIR = rtrim(realpath(__DIR__ . '/../../../../../'), '/') . '/';
 }
 
