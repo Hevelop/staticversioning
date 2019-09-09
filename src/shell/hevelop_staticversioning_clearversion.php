@@ -24,11 +24,12 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-if (!defined('MAGE_BASE_DIR')) {
-    define('MAGE_BASE_DIR', rtrim(realpath(__DIR__ . '/../../../../../htdocs/'), '/') . '/');
+$MAGE_BASE_DIR = rtrim(realpath(__DIR__ . '/../../../../../htdocs/'), '/') . '/';
+if (!file_exists(MAGE_BASE_DIR)) {
+    $MAGE_BASE_DIR = rtrim(realpath(__DIR__ . '/../../../../../'), '/') . '/';
 }
 
-require_once MAGE_BASE_DIR . '/shell/abstract.php';
+require_once $MAGE_BASE_DIR . '/shell/abstract.php';
 
 /**
  * Magento Compiler Shell Script
@@ -68,6 +69,40 @@ class Mage_Shell_Compiler extends Mage_Shell_Abstract
         ];
     }
 
+    private function generateVersioningFile($versioning_path) {
+        if (!file_exists($versioning_path)) {
+            $v = time();
+            file_put_contents($versioning_path, (string) $v);
+        }
+        return $versioning_path;
+    }
+
+    private function regenerateMediaVersioning() {
+        $versioning_path = $this->removeMediaVersioning();
+        $versioning_path = $this->generateVersioningFile($versioning_path);
+        return $versioning_path;
+    }
+
+    private function regenerateJsVersioning() {
+        $versioning_path = $this->removeJsVersioning();
+        $versioning_path = $this->generateVersioningFile($versioning_path);
+        return $versioning_path;
+    }
+
+    private function regenerateSkinVersioning() {
+        $versioning_path = $this->removeSkinVersioning();
+        $versioning_path = $this->generateVersioningFile($versioning_path);
+        return $versioning_path;
+    }
+
+    private function regenerateAllVersioning() {
+        return [
+            $this->regenerateMediaVersioning(),
+            $this->regenerateJsVersioning(),
+            $this->regenerateSkinVersioning()
+        ];
+    }
+
     /**
      * Run script
      *
@@ -87,6 +122,18 @@ class Mage_Shell_Compiler extends Mage_Shell_Abstract
         } else if ($this->getArg('all')) {
             $file_paths = $this->removeAllVersioning();
             echo "Removed all versioning files (" . join(", ", $file_paths) . ")\n";
+        } else if ($this->getArg('regenerate-skin')) {
+            $file_path = $this->regenerateSkinVersioning();
+            echo "Regenerated js versioning file ($file_path)\n";
+        } else if ($this->getArg('regenerate-js')) {
+            $file_path = $this->regenerateJsVersioning();
+            echo "Regenerated js versioning file ($file_path)\n";
+        } else if ($this->getArg('regenerate-media')) {
+            $file_path = $this->regenerateMediaVersioning();
+            echo "Regenerated media versioning file ($file_path)\n";
+        } else if ($this->getArg('regenerate-all')) {
+            $file_paths = $this->regenerateAllVersioning();
+            echo "Regenerated all versioning files (" . join(", ", $file_paths) . ")\n";
         } else {
             echo $this->usageHelp();
         }
@@ -104,6 +151,10 @@ Usage:  php -f hevelop_staticversioning_clearversion.php -- [options]
   js        Delete js version file
   media     Delete media version file
   all       Delete skin, js and media version file
+  regenerate-skin      Regenerate skin version file      
+  regenerate-js        Regenerate js version file
+  regenerate-media     Regenerate media version file
+  regenerate-all       Regenerate skin, js and media version file
   help      This help
 USAGE;
     }
